@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><title>同方报表设计器</title><link rel="icon" href="./favicon.ico"><script defer="defer" src="./js/spreadsheet.js"></script><link href="./styles/spreadsheet.css" rel="stylesheet"></head><body onload="load()"><div id="root"></div><script>function load() {
+        const rows = {
+          len: 80,
+          0: {
+            cells: {
+              0: { text: 'hello' },
+              2: { text: 'world' },
+            },
+          },
+          2: {
+            cells: {
+              1: { text: 'Hello' },
+            },
+          },
+          8: {
+            cells: {
+              8: { text: 'border test' },
+            },
+          },
+        }
+        // Spreadsheet.locale('zh-cn')
+        const xs = Spreadsheet('#root', {})
+          // .loadData([
+          // {
+          //   freeze: 'F3',
+          //   rows,
+          // },
+        // ])
+        .change(data=>{
+          console.log('change: --->')
+          console.log('这个 change 方法将注入到实例对象中去，当实例对象的 sheet 触发 change 事件时，就会执行。', data)
+          console.log('<---')
+        })
+        .on('cells-selected',(cell, range)=>{
+          console.log('cells-selected: --->')
+          console.log(cell, range)
+          console.log('<---')
+        })
+        .on('cell-selected',(cell, rowIndex, colIndex)=>{
+          console.log('cell-selected: --->')
+          console.log(cell, rowIndex, colIndex)
+          console.log('<---')
+        })
+        .on('cell-edited',(text, rowIndex, colIndex)=>{
+          console.log('cell-edited: --->')
+          console.log(text, rowIndex, colIndex)
+          console.log('<---')
+        })
+        console.log(xs)
+      }</script></body></html>
