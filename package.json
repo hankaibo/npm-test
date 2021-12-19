@@ -2,7 +2,7 @@
   "name": "@hankaibo/npm-test",
   "version": "0.0.1",
   "description": "测试发包。",
-  "main": "index.js",
+  "main": "dist/js/spreadsheet.js",
   "files": [
     "dist"
   ],
